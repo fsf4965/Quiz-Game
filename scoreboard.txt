@@ -1,0 +1,5 @@
+Tom: 50 points
+Claire: 500 points
+Jane: 250 points
+test123: -250 points
+duc: -250 points
