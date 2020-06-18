@@ -10,7 +10,7 @@ import java.util.*;
 import java.io.*;
 
 /*Main class that runs the Quiz Game Program*/
-public class QuizGameApp 
+public class QuizGame_CUI 
 {
     public static void main(String[] args) 
     {

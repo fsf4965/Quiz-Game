@@ -3,3 +3,5 @@ Claire: 500 points
 Jane: 250 points
 test123: -250 points
 duc: -250 points
+Testng 112: 50 points
+Type here: -250 points

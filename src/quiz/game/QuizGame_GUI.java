@@ -2,7 +2,7 @@ package quiz.game;
 import java.awt.*;
 import javax.swing.*;
 
-public class GUI_Panel extends JPanel
+public class QuizGame_GUI extends JPanel
 {
     public static void main(String[] args) {
     java.awt.EventQueue.invokeLater(new Runnable() {
