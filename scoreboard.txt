@@ -5,3 +5,9 @@ test123: -250 points
 duc: -250 points
 Testng 112: 50 points
 Type here: -250 points
+Duc: -250 points
+Donny: 350 points
+Test: -100 points
+Typer: 350 points
+: 350 points
+Type here: -100 points

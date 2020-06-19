@@ -214,7 +214,8 @@ public class GUI_Frame extends JFrame implements ActionListener
                                         "6. Scoreboard\n");
                     
                     JFrame categoryWindow = new JFrame();
-                    String categoryMessage = "Enter your chosen chategory here (number only): ";
+                    String categoryMessage = "Enter your chosen chategory here (number only): \n" +
+                                                "NOTE: If you enter an invalid value, simply press Submit to start the game again";
                     String category = JOptionPane.showInputDialog(categoryWindow, categoryMessage);
                     if (category == null) 
                     {
@@ -225,7 +226,7 @@ public class GUI_Frame extends JFrame implements ActionListener
                     {
                         if(Objects.equals(category, "1"))
                         {
-                            mainTextArea.setText("Press Enter to start the Movie Quiz!\n");
+                            mainTextArea.setText("Starting the Movie Quiz!\n");
                             Question_DB database = new Question_DB();
                             ArrayList<Question> questions = new ArrayList<Question>();
                             questions = database.movies();
@@ -243,7 +244,7 @@ public class GUI_Frame extends JFrame implements ActionListener
                                 String correctAnswer = questions.get(questionNumber).getCorrectAnswer();
                                 
                                 JFrame answerWindow = new JFrame();
-                                String answerMessage = "Enter your answer here (full answer only): ";
+                                String answerMessage = "Enter your FULL answer here (Case insensitive): ";
                                 String answer = JOptionPane.showInputDialog(answerWindow, answerMessage);
                                 if (answer == null) 
                                 {
@@ -253,7 +254,7 @@ public class GUI_Frame extends JFrame implements ActionListener
                             
                                 else
                                 {
-                                    if (Objects.equals(answer, correctAnswer))
+                                    if (answer.equalsIgnoreCase(correctAnswer))
                                         {
                                             mainTextArea.append("\nYou got the correct answer!\n\n");
                                             score.set(0, score.get(0) + 100);
@@ -286,7 +287,7 @@ public class GUI_Frame extends JFrame implements ActionListener
                         
                         if(Objects.equals(category, "2"))
                         {
-                            mainTextArea.setText("Press Enter to start the Pop Music Quiz!\n\n");
+                            mainTextArea.setText("Starting the Pop Music Quiz!\n\n");
                             Question_DB database = new Question_DB();
                             ArrayList<Question> questions = new ArrayList<Question>();
                             questions = database.popmusic();
@@ -304,7 +305,7 @@ public class GUI_Frame extends JFrame implements ActionListener
                                 String correctAnswer = questions.get(questionNumber).getCorrectAnswer();
                                 
                                 JFrame answerWindow = new JFrame();
-                                String answerMessage = "Enter your answer here (full answer only): ";
+                                String answerMessage = "Enter your FULL answer here (Case insensitive): ";
                                 String answer = JOptionPane.showInputDialog(answerWindow, answerMessage);
                                 if (answer == null) 
                                 {
@@ -314,7 +315,7 @@ public class GUI_Frame extends JFrame implements ActionListener
                             
                                 else
                                 {
-                                    if (Objects.equals(answer, correctAnswer))
+                                    if (answer.equalsIgnoreCase(correctAnswer))
                                         {
                                             mainTextArea.append("\nYou got the correct answer!\n\n");
                                             score.set(0, score.get(0) + 100);
@@ -347,7 +348,7 @@ public class GUI_Frame extends JFrame implements ActionListener
                         
                         if(Objects.equals(category, "3"))
                         {
-                            mainTextArea.setText("Press Enter to start the Mythology Quiz!\n\n");
+                            mainTextArea.setText("Starting the Mythology Quiz!\n\n");
                             Question_DB database = new Question_DB();
                             ArrayList<Question> questions = new ArrayList<Question>();
                             questions = database.mythology();
@@ -365,7 +366,7 @@ public class GUI_Frame extends JFrame implements ActionListener
                                 String correctAnswer = questions.get(questionNumber).getCorrectAnswer();
                                 
                                 JFrame answerWindow = new JFrame();
-                                String answerMessage = "Enter your answer here (full answer only): ";
+                                String answerMessage = "Enter your FULL answer here (Case insensitive): ";
                                 String answer = JOptionPane.showInputDialog(answerWindow, answerMessage);
                                 if (answer == null) 
                                 {
@@ -375,7 +376,7 @@ public class GUI_Frame extends JFrame implements ActionListener
                             
                                 else
                                 {
-                                    if (Objects.equals(answer, correctAnswer))
+                                    if (answer.equalsIgnoreCase(correctAnswer))
                                         {
                                             mainTextArea.append("\nYou got the correct answer!\n\n");
                                             score.set(0, score.get(0) + 100);
@@ -408,7 +409,7 @@ public class GUI_Frame extends JFrame implements ActionListener
                         
                         if(Objects.equals(category, "4"))
                         {
-                            mainTextArea.setText("Press Enter to start the Computer Quiz!\n\n");
+                            mainTextArea.setText("Starting the Computer Quiz!\n\n");
                             Question_DB database = new Question_DB();
                             ArrayList<Question> questions = new ArrayList<Question>();
                             questions = database.computer();
@@ -426,7 +427,7 @@ public class GUI_Frame extends JFrame implements ActionListener
                                 String correctAnswer = questions.get(questionNumber).getCorrectAnswer();
                                 
                                 JFrame answerWindow = new JFrame();
-                                String answerMessage = "Enter your answer here (full answer only): ";
+                                String answerMessage = "Enter your FULL answer here (Case insensitive): ";
                                 String answer = JOptionPane.showInputDialog(answerWindow, answerMessage);
                                 if (answer == null) 
                                 {
@@ -436,7 +437,7 @@ public class GUI_Frame extends JFrame implements ActionListener
                             
                                 else
                                 {
-                                    if (Objects.equals(answer, correctAnswer))
+                                    if (answer.equalsIgnoreCase(correctAnswer))
                                         {
                                             mainTextArea.append("\nYou got the correct answer!\n\n");
                                             score.set(0, score.get(0) + 100);
@@ -469,7 +470,7 @@ public class GUI_Frame extends JFrame implements ActionListener
                         
                         if(Objects.equals(category, "5"))
                         {
-                            mainTextArea.setText("Press Enter to start the Geography Quiz!\n\n");
+                            mainTextArea.setText("Starting the Geography Quiz!\n\n");
                             Question_DB database = new Question_DB();
                             ArrayList<Question> questions = new ArrayList<Question>();
                             questions = database.geography();
@@ -487,7 +488,7 @@ public class GUI_Frame extends JFrame implements ActionListener
                                 String correctAnswer = questions.get(questionNumber).getCorrectAnswer();
                                 
                                 JFrame answerWindow = new JFrame();
-                                String answerMessage = "Enter your answer here (full answer only): ";
+                                String answerMessage = "Enter your FULL answer here (Case insensitive): ";
                                 String answer = JOptionPane.showInputDialog(answerWindow, answerMessage);
                                 if (answer == null) 
                                 {
@@ -497,7 +498,7 @@ public class GUI_Frame extends JFrame implements ActionListener
                             
                                 else
                                 {
-                                    if (Objects.equals(answer, correctAnswer))
+                                    if (answer.equalsIgnoreCase(correctAnswer))
                                         {
                                             mainTextArea.append("\nYou got the correct answer!\n\n");
                                             score.set(0, score.get(0) + 100);
@@ -557,11 +558,6 @@ public class GUI_Frame extends JFrame implements ActionListener
                             {
                                 mainTextArea.setText("An error has occurred.");
                             }
-                        }
-                        
-                        else
-                        {
-                            mainTextArea.setText("Invalid input, please press Play to try again.");
                         }
                     }
                 }
