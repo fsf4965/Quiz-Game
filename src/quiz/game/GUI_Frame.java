@@ -1,3 +1,10 @@
+/*
+COMP603 ASSIGNMENT PART 2
+
+Group ID: 20
+Members: Duc Dao (18020007), Deni Sarito (17988272)
+Project Title: General Quiz Game
+*/
 package quiz.game;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +19,8 @@ import java.util.Collections;
 import java.util.Objects;
 import javax.swing.*;
 
+/*Configuration and ActionListener file for the GUI.
+  Also contains main codes for the Quiz App itself*/
 public class GUI_Frame extends JFrame implements ActionListener
 {
     private javax.swing.JTextField inputTextField;
@@ -27,7 +36,7 @@ public class GUI_Frame extends JFrame implements ActionListener
     private javax.swing.JButton submitButton;
     private javax.swing.JTextField titleTextField;
     
-    
+    /*Setting up GUI and preferences (windows, buttons, etc)*/
     public GUI_Frame() 
     {
         jPanel1 = new javax.swing.JPanel();
@@ -170,13 +179,17 @@ public class GUI_Frame extends JFrame implements ActionListener
         questionButton.setEnabled(false);
     }
 
+    /*ActionListener for the inpu text box and various buttons*/
     @Override
     public void actionPerformed(ActionEvent e) 
     {
+        /*Score Array to track user's scores*/
         ArrayList<Integer> score = new ArrayList<Integer>();
         score.add(0);
         
         Object source = e.getSource();
+        
+        /*When Rule Button is pressed*/
         if (source == ruleButton) 
         {
             mainTextArea.setText("Welcome to the General Quiz Game!\n" + 
@@ -188,21 +201,29 @@ public class GUI_Frame extends JFrame implements ActionListener
                                     "-----------------------------------------------\n");
         }
         
+        /*When Quit Button is pressed*/
         if (source == quitButton)
         {
             System.exit(0);
         }
         
+        /*When Play Button is pressed*/
         if (source == playButton)
         {
             mainTextArea.setText("Please enter your name: ");
             submitButton.setEnabled(true);
+            
+            /*When Submit Button is pressed*/
             submitButton.addActionListener(new ActionListener(){
                 public void actionPerformed(ActionEvent e)
                 {
                     mainTextArea.append(inputTextField.getText() + "\n");
                     String name = inputTextField.getText();
                     inputTextField.setText("");
+                    
+                    /*Using a dialog to force User to pick a category,
+                      pressing Submit will allow the Dialog Window to
+                      pop up*/
                     mainTextArea.append("\nPlease enter the category number (Press Enter to select):\n" +
                                         "\nQuiz Categories:\n" +
                                         "1. Movies\n" +
@@ -222,6 +243,9 @@ public class GUI_Frame extends JFrame implements ActionListener
                     // User clicked cancel
                     }
                     
+                    /*If Else to help cycle through the categories,
+                      1-5 are the main Quiz games,
+                      6 is the leaderboard*/
                     else
                     {
                         if(Objects.equals(category, "1"))

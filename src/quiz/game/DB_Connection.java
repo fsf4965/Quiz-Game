@@ -1,3 +1,10 @@
+/*
+COMP603 ASSIGNMENT PART 2
+
+Group ID: 20
+Members: Duc Dao (18020007), Deni Sarito (17988272)
+Project Title: General Quiz Game
+*/
 package quiz.game;
 
 import java.sql.Connection;
@@ -10,10 +17,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.derby.jdbc.EmbeddedDriver;
 
+/*Setting up connection to the embedded database*/
 public class DB_Connection 
 {
     private static final String driver = "org.apache.derby.jdbc.ClientDriver";
-    private static final String jdbc_url = "jdbc:derby://localhost:1527/QuestionDB";
+    private static final String jdbc_url = "jdbc:derby:QuestionDB;create=true";
     private static final String username = "fsf4965";
     private static final String password = "welcome";
     
@@ -35,13 +43,98 @@ public class DB_Connection
         }
     }
     
+    /*Creating the tables that will contain questions using SQL commands.
+      Should only be run once as tables will be created and saved.*/
+    public void createTable()
+    {
+        try
+        {
+            connect.createStatement().execute("CREATE TABLE Q_MOVIES(QUESTION VARCHAR(255), OPTION1 VARCHAR(100), OPTION2 VARCHAR(100), OPTION3 VARCHAR(100), OPTION4 VARCHAR(100), CORRECT_ANSWER1 VARCHAR(100))");
+            connect.createStatement().execute("CREATE TABLE Q_POPMUSIC(QUESTION VARCHAR(255), OPTION1 VARCHAR(100), OPTION2 VARCHAR(100), OPTION3 VARCHAR(100), OPTION4 VARCHAR(100), CORRECT_ANSWER1 VARCHAR(100))");
+            connect.createStatement().execute("CREATE TABLE Q_MYTHOLOGY(QUESTION VARCHAR(255), OPTION1 VARCHAR(100), OPTION2 VARCHAR(100), OPTION3 VARCHAR(100), OPTION4 VARCHAR(100), CORRECT_ANSWER1 VARCHAR(100))");
+            connect.createStatement().execute("CREATE TABLE Q_COMPUTER(QUESTION VARCHAR(255), OPTION1 VARCHAR(100), OPTION2 VARCHAR(100), OPTION3 VARCHAR(100), OPTION4 VARCHAR(100), CORRECT_ANSWER1 VARCHAR(100))");
+            connect.createStatement().execute("CREATE TABLE Q_GEOGRAPHY(QUESTION VARCHAR(255), OPTION1 VARCHAR(100), OPTION2 VARCHAR(100), OPTION3 VARCHAR(100), OPTION4 VARCHAR(100), CORRECT_ANSWER1 VARCHAR(100))");
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(DB_Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    /*Insert methods into each category using SQL commands.*/
+    public void insertIntoMovies(String question, String option1, String option2, String option3, String option4, String answer)
+    {
+        try 
+        {
+            connect.createStatement().execute("INSERT INTO Q_MOVIES VALUES ('"+question+"', '"+option1+"', '"+option2+"', '"+option3+"', '"+option4+"', '"+answer+"')");
+        } catch (SQLException ex) 
+        {
+            Logger.getLogger(DB_Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void insertIntoPopMusic(String question, String option1, String option2, String option3, String option4, String answer)
+    {
+        try 
+        {
+            connect.createStatement().execute("INSERT INTO Q_POPMUSIC VALUES ('"+question+"', '"+option1+"', '"+option2+"', '"+option3+"', '"+option4+"', '"+answer+"')");
+        } catch (SQLException ex) 
+        {
+            Logger.getLogger(DB_Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void insertIntoMythology(String question, String option1, String option2, String option3, String option4, String answer)
+    {
+        try 
+        {
+            connect.createStatement().execute("INSERT INTO Q_MYTHOLOGY VALUES ('"+question+"', '"+option1+"', '"+option2+"', '"+option3+"', '"+option4+"', '"+answer+"')");
+        } catch (SQLException ex) 
+        {
+            Logger.getLogger(DB_Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void insertIntoComputer(String question, String option1, String option2, String option3, String option4, String answer)
+    {
+        try 
+        {
+            connect.createStatement().execute("INSERT INTO Q_COMPUTER VALUES ('"+question+"', '"+option1+"', '"+option2+"', '"+option3+"', '"+option4+"', '"+answer+"')");
+        } catch (SQLException ex) 
+        {
+            Logger.getLogger(DB_Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void insertIntoGeography(String question, String option1, String option2, String option3, String option4, String answer)
+    {
+        try 
+        {
+            connect.createStatement().execute("INSERT INTO Q_GEOGRAPHY VALUES ('"+question+"', '"+option1+"', '"+option2+"', '"+option3+"', '"+option4+"', '"+answer+"')");
+        } catch (SQLException ex) 
+        {
+            Logger.getLogger(DB_Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    /*Main method used to test connection and run createTable() once*/
+    public static void main(String[] args)
+    {
+        DB_Connection db = new DB_Connection();
+        //db.createTable();
+    }
+    
+    /*Methods to insert data from tables into a String Array.
+      Because the Question class contains a String for Questions,
+      String array for 4 options, and a String for answer,
+      each category will have 3 methods each: questions, options, and correct answer*/
     public ArrayList<String> moviesQuestions()
     {
         ArrayList<String> moviesQuestions = new ArrayList<String>();
         try
         {
             Statement statement = this.connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT QUESTION FROM MOVIES");
+            ResultSet resultSet = statement.executeQuery("SELECT QUESTION FROM Q_MOVIES");
             
             while(resultSet.next())
             {
@@ -62,7 +155,7 @@ public class DB_Connection
         try
         {
             Statement statement = this.connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT OPTION1, OPTION2, OPTION3, OPTION4 FROM MOVIES");
+            ResultSet resultSet = statement.executeQuery("SELECT OPTION1, OPTION2, OPTION3, OPTION4 FROM Q_MOVIES");
             
             while(resultSet.next())
             {
@@ -83,7 +176,7 @@ public class DB_Connection
         try
         {
             Statement statement = this.connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT CORRECT_ANSWER1 FROM MOVIES");
+            ResultSet resultSet = statement.executeQuery("SELECT CORRECT_ANSWER1 FROM Q_MOVIES");
             
             while(resultSet.next())
             {
@@ -105,7 +198,7 @@ public class DB_Connection
         try
         {
             Statement statement = this.connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT QUESTION FROM POPMUSIC");
+            ResultSet resultSet = statement.executeQuery("SELECT QUESTION FROM Q_POPMUSIC");
             
             while(resultSet.next())
             {
@@ -126,7 +219,7 @@ public class DB_Connection
         try
         {
             Statement statement = this.connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT OPTION1, OPTION2, OPTION3, OPTION4 FROM POPMUSIC");
+            ResultSet resultSet = statement.executeQuery("SELECT OPTION1, OPTION2, OPTION3, OPTION4 FROM Q_POPMUSIC");
             
             while(resultSet.next())
             {
@@ -147,7 +240,7 @@ public class DB_Connection
         try
         {
             Statement statement = this.connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT CORRECT_ANSWER1 FROM POPMUSIC");
+            ResultSet resultSet = statement.executeQuery("SELECT CORRECT_ANSWER1 FROM Q_POPMUSIC");
             
             while(resultSet.next())
             {
@@ -169,7 +262,7 @@ public class DB_Connection
         try
         {
             Statement statement = this.connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT QUESTION FROM MYTHOLOGY");
+            ResultSet resultSet = statement.executeQuery("SELECT QUESTION FROM Q_MYTHOLOGY");
             
             while(resultSet.next())
             {
@@ -190,7 +283,7 @@ public class DB_Connection
         try
         {
             Statement statement = this.connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT OPTION1, OPTION2, OPTION3, OPTION4 FROM MYTHOLOGY");
+            ResultSet resultSet = statement.executeQuery("SELECT OPTION1, OPTION2, OPTION3, OPTION4 FROM Q_MYTHOLOGY");
             
             while(resultSet.next())
             {
@@ -211,7 +304,7 @@ public class DB_Connection
         try
         {
             Statement statement = this.connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT CORRECT_ANSWER1 FROM MYTHOLOGY");
+            ResultSet resultSet = statement.executeQuery("SELECT CORRECT_ANSWER1 FROM Q_MYTHOLOGY");
             
             while(resultSet.next())
             {
@@ -233,7 +326,7 @@ public class DB_Connection
         try
         {
             Statement statement = this.connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT QUESTION FROM COMPUTER");
+            ResultSet resultSet = statement.executeQuery("SELECT QUESTION FROM Q_COMPUTER");
             
             while(resultSet.next())
             {
@@ -254,7 +347,7 @@ public class DB_Connection
         try
         {
             Statement statement = this.connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT OPTION1, OPTION2, OPTION3, OPTION4 FROM COMPUTER");
+            ResultSet resultSet = statement.executeQuery("SELECT OPTION1, OPTION2, OPTION3, OPTION4 FROM Q_COMPUTER");
             
             while(resultSet.next())
             {
@@ -275,7 +368,7 @@ public class DB_Connection
         try
         {
             Statement statement = this.connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT CORRECT_ANSWER1 FROM COMPUTER");
+            ResultSet resultSet = statement.executeQuery("SELECT CORRECT_ANSWER1 FROM Q_COMPUTER");
             
             while(resultSet.next())
             {
@@ -297,7 +390,7 @@ public class DB_Connection
         try
         {
             Statement statement = this.connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT QUESTION FROM GEOGRAPHY");
+            ResultSet resultSet = statement.executeQuery("SELECT QUESTION FROM Q_GEOGRAPHY");
             
             while(resultSet.next())
             {
@@ -318,7 +411,7 @@ public class DB_Connection
         try
         {
             Statement statement = this.connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT OPTION1, OPTION2, OPTION3, OPTION4 FROM GEOGRAPHY");
+            ResultSet resultSet = statement.executeQuery("SELECT OPTION1, OPTION2, OPTION3, OPTION4 FROM Q_GEOGRAPHY");
             
             while(resultSet.next())
             {
@@ -339,7 +432,7 @@ public class DB_Connection
         try
         {
             Statement statement = this.connect.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT CORRECT_ANSWER1 FROM GEOGRAPHY");
+            ResultSet resultSet = statement.executeQuery("SELECT CORRECT_ANSWER1 FROM Q_GEOGRAPHY");
             
             while(resultSet.next())
             {

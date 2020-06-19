@@ -1,7 +1,7 @@
-Fri Jun 19 06:09:18 NZST 2020 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
+Fri Jun 19 15:24:56 NZST 2020 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Fri Jun 19 06:09:18 NZST 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0172-c89e-db31-ffffc79deb55 
+Fri Jun 19 15:24:56 NZST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0172-ca9b-8f71-ffffc79deb55 
 on database directory E:\Downloads\Study\University\2020\PDC\Part 2\Quiz Game 2\database\QuestionDB with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
 Loaded from file:/C:/Program%20Files/glassfish-4.1.1/javadb/lib/derby.jar
 java.vendor=Oracle Corporation
@@ -13,7 +13,4 @@ os.version=10.0
 derby.system.home=E:\Downloads\Study\University\2020\PDC\Part 2\Quiz Game 2\database
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-Fri Jun 19 06:13:34 NZST 2020: Shutting down Derby engine
-----------------------------------------------------------------
-Fri Jun 19 06:13:34 NZST 2020:
-Shutting down instance a816c00e-0172-c89e-db31-ffffc79deb55 on database directory E:\Downloads\Study\University\2020\PDC\Part 2\Quiz Game 2\database\QuestionDB with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Fri Jun 19 23:02:19 NZST 2020: Shutting down Derby engine

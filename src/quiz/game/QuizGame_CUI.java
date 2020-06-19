@@ -1,5 +1,5 @@
 /*
-COMP603 ASSIGNMENT PART 1
+COMP603 ASSIGNMENT PART 2
 
 Group ID: 20
 Members: Duc Dao (18020007), Deni Sarito (17988272)
@@ -54,13 +54,17 @@ public class QuizGame_CUI
         }
         
         /*A loop is created to cycle through each category. 
-          Category 1-5 are each Quiz category, and 2 new 
-          categories are added: 6. Quit Menu and 7. Try Again Menu
+          Category 1-5 are each Quiz category, and 3 new 
+          categories are added: 6. Quit Menu, 7. Try Again Menu,
+          and 9. Invalid Input menu
           
           6. Quit Menu: will display a score board of every quiz taken,
              then quit the program
           7. Try Again Menu: allows the user to view the score board, 
-             and have the option to play another quiz, or quit the game*/
+             and have the option to play another quiz, or quit the game
+          8. Force ending of the program
+          9. All invalid inputs are redirected here
+        */
         while (category != 8)
         {
             /*Category 1-5 will have the same functionality, just different questions*/
